@@ -14,7 +14,7 @@ class USBSerialDevice(Module):
         reset = Signal()
         self.comb += ulpi_pads.rst.eq(~reset)
         
-        vdir = os.path.join(os.getcwd(), "verilog")
+        vdir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "verilog")
         platform.add_source(os.path.join(vdir, f"LunaUSBSerialDevice.v"))
 
 
