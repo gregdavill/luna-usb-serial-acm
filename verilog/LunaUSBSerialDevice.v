@@ -1529,7 +1529,7 @@ module USBStreamInEndpoint(usb_clk, ack, nak, stall, nyet, pid, address, endpoin
   assign tx_manager_generate_zlps = 1'h1;
 endmodule
 
-module USBStreamInEndpoint_140666242472304(usb_clk, valid, first, last, payload, ready, ack, nak, stall, nyet, pid, address, endpoint, new_token, ready_for_response, frame, new_frame, is_in, is_out, is_setup, is_ping, \ack$1 , \nak$2 , \stall$3 , \valid$4 , tx_pid_toggle, \payload$5 , \first$6 , \last$7 , \ready$8 , usb_rst);
+module USBStreamInEndpoint_139748379531824(usb_clk, valid, first, last, payload, ready, ack, nak, stall, nyet, pid, address, endpoint, new_token, ready_for_response, frame, new_frame, is_in, is_out, is_setup, is_ping, \ack$1 , \nak$2 , \stall$3 , \valid$4 , tx_pid_toggle, \payload$5 , \first$6 , \last$7 , \ready$8 , usb_rst);
   wire \$13 ;
   input ack;
   output \ack$1 ;
@@ -13297,7 +13297,7 @@ module usb(usb_clk, valid, first, last, payload, ready, \valid$1 , \first$2 , \l
     .usb_rst(usb_rst),
     .valid(\endpoint_mux_valid$94 )
   );
-  USBStreamInEndpoint_140666242472304 USBStreamInEndpoint_140666242472304 (
+  USBStreamInEndpoint_139748379531824 USBStreamInEndpoint_139748379531824 (
     .ack(\endpoint_mux_ack$62 ),
     .\ack$1 (\endpoint_mux_ack$84 ),
     .address(\endpoint_mux_address$67 ),
@@ -13866,23 +13866,23 @@ endmodule
 module usb_reset(phy_stop, clk, rst, phy_reset);
   reg \initial  = 0;
   wire \$1 ;
-  wire [17:0] \$10 ;
+  wire [22:0] \$10 ;
   wire \$12 ;
-  wire [17:0] \$14 ;
-  wire [17:0] \$15 ;
-  wire [17:0] \$17 ;
+  wire [22:0] \$14 ;
+  wire [22:0] \$15 ;
+  wire [22:0] \$17 ;
   wire \$19 ;
-  wire [17:0] \$21 ;
+  wire [22:0] \$21 ;
   wire \$23 ;
-  wire [17:0] \$25 ;
+  wire [22:0] \$25 ;
   wire \$27 ;
   wire \$3 ;
   wire \$4 ;
-  wire [17:0] \$7 ;
-  wire [17:0] \$8 ;
+  wire [22:0] \$7 ;
+  wire [22:0] \$8 ;
   input clk;
-  reg [16:0] cycles_in_reset = 17'h00000;
-  reg [16:0] \cycles_in_reset$next ;
+  reg [21:0] cycles_in_reset = 22'h000000;
+  reg [21:0] \cycles_in_reset$next ;
   reg [1:0] fsm_state = 2'h0;
   reg [1:0] \fsm_state$next ;
   output phy_reset;
@@ -13890,15 +13890,15 @@ module usb_reset(phy_stop, clk, rst, phy_reset);
   input rst;
   wire trigger;
   assign \$10  = cycles_in_reset + 1'h1;
-  assign \$12  = \$10  == 17'h1d4c0;
+  assign \$12  = \$10  == 22'h249f00;
   assign \$15  = cycles_in_reset + 1'h1;
   assign \$17  = cycles_in_reset + 1'h1;
   assign \$1  = ! fsm_state;
-  assign \$19  = \$17  == 14'h2ee0;
+  assign \$19  = \$17  == 18'h3a980;
   assign \$21  = cycles_in_reset + 1'h1;
-  assign \$23  = \$21  == 17'h1d4c0;
+  assign \$23  = \$21  == 22'h249f00;
   assign \$25  = cycles_in_reset + 1'h1;
-  assign \$27  = \$25  == 14'h2ee0;
+  assign \$27  = \$25  == 18'h3a980;
   assign \$4  = fsm_state == 1'h1;
   assign \$3  = ~ \$4 ;
   assign \$8  = cycles_in_reset + 1'h1;
@@ -13911,27 +13911,27 @@ module usb_reset(phy_stop, clk, rst, phy_reset);
     \cycles_in_reset$next  = cycles_in_reset;
     casez (fsm_state)
       2'h1:
-          \cycles_in_reset$next  = 17'h00000;
+          \cycles_in_reset$next  = 22'h000000;
       2'h0:
         begin
-          \cycles_in_reset$next  = \$8 [16:0];
+          \cycles_in_reset$next  = \$8 [21:0];
           casez (\$12 )
             1'h1:
-                \cycles_in_reset$next  = 17'h00000;
+                \cycles_in_reset$next  = 22'h000000;
           endcase
         end
       2'h2:
         begin
-          \cycles_in_reset$next  = \$15 [16:0];
+          \cycles_in_reset$next  = \$15 [21:0];
           casez (\$19 )
             1'h1:
-                \cycles_in_reset$next  = 17'h00000;
+                \cycles_in_reset$next  = 22'h000000;
           endcase
         end
     endcase
     casez (rst)
       1'h1:
-          \cycles_in_reset$next  = 17'h00000;
+          \cycles_in_reset$next  = 22'h000000;
     endcase
   end
   always @* begin

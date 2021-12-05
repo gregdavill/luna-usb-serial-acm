@@ -44,7 +44,7 @@ class LunaUSBSerialDevice(Elaboratable):
         # Create our clock domains.
         m.domains.sync = ClockDomain()
         m.domains.usb  = ClockDomain()
-        m.submodules.usb_reset = controller = PHYResetController()
+        m.submodules.usb_reset = controller = PHYResetController(reset_length=40e-3, stop_length=40e-4)
         m.d.comb += [
             ResetSignal("usb")  .eq(controller.phy_reset),
             self.usb_holdoff    .eq(controller.phy_stop)
