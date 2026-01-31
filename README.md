@@ -15,6 +15,6 @@ python3 -m venv .venv
 . ./.venv/bin/activate
 
 pip3 install git+https://github.com/greatscottgadgets/luna.git
-pip install amaranth-yosys
+pip3 install amaranth-yosys
 python3 build_verilog.py
 ```
