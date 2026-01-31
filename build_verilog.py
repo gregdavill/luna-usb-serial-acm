@@ -18,10 +18,10 @@ class LunaUSBSerialDevice(Elaboratable):
             [
                 ('data', [('i', 8, DIR_FANIN), ('o', 8, DIR_FANOUT), ('oe', 1, DIR_FANOUT)]),
                 ('clk', [('o', 1, DIR_FANOUT)]),
-                ('stp', 1, DIR_FANOUT),
+                ('stp', [('o', 1, DIR_FANOUT)]),
                 ('nxt', [('i', 1, DIR_FANIN)]),
                 ('dir', [('i', 1, DIR_FANIN)]),
-                ('rst', 1, DIR_FANOUT)
+                ('rst', [('o', 1, DIR_FANOUT)])
             ]
         )
 
